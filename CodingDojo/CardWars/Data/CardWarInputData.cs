@@ -2,10 +2,10 @@ namespace CodingDojo.CardWars.Data;
 
 public struct CardWarInputData
 {
-	public IEnumerable<CardValue> PlayerOneStartingDeck { get; }
-	public IEnumerable<CardValue> PlayerTwoStartingDeck { get; }
+	public IEnumerable<CardValue>? PlayerOneStartingDeck { get; }
+	public IEnumerable<CardValue>? PlayerTwoStartingDeck { get; }
 
-	public CardWarInputData(List<CardValue> playerOneStartingDeck, List<CardValue> playerTwoStartingDeck)
+	public CardWarInputData(IEnumerable<CardValue> playerOneStartingDeck, IEnumerable<CardValue> playerTwoStartingDeck)
 	{
 		PlayerOneStartingDeck = playerOneStartingDeck;
 		PlayerTwoStartingDeck = playerTwoStartingDeck;

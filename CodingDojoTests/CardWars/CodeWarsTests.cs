@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using CodingDojo.CardWars.Data;
 using CodingDojo.CardWars.Implementation;
@@ -18,40 +17,38 @@ public class CodeWarsTests
 	}
 
 	[Test]
-	public void IsBothNullInputThrows()
+	public void IsHigherHandWins()
 	{
-		var input = new CardWarInputData(null, null);
+		var deck1 = new List<CardValue>
+		{
+			CardValue.Two
+		};
 
-		void Act() => _cardWarProcessor.ProcessInput(input);
+		var deck2 = new List<CardValue>
+		{
+			CardValue.Ten
+		};
 
-		Assert.Throws(Is.InstanceOf<Exception>(), Act);
+		var input = new CardWarInputData(deck1, deck2);
+		var result = _cardWarProcessor.ProcessInput(input);
+		Assert.AreEqual(result, GameResultType.PlayerTwo);
 	}
 
 	[Test]
-	public void IsLeftNullInputThrows()
+	public void IsEqualHandsTies()
 	{
-		var playerOneStartingDeck = new List<CardValue>
+		var deck1 = new List<CardValue>
 		{
-			CardValue.Eight
+			CardValue.Two
 		};
-		var input = new CardWarInputData(playerOneStartingDeck, null);
 
-		void Act() => _cardWarProcessor.ProcessInput(input);
-
-		Assert.Throws(Is.InstanceOf<Exception>(), Act);
-	}
-
-	[Test]
-	public void IsRightNullInputThrows()
-	{
-		var startingDeck = new List<CardValue>
+		var deck2 = new List<CardValue>
 		{
-			CardValue.Eight
+			CardValue.Two
 		};
-		var input = new CardWarInputData(null, startingDeck);
 
-		void Act() => _cardWarProcessor.ProcessInput(input);
-
-		Assert.Throws(Is.InstanceOf<Exception>(), Act);
+		var input = new CardWarInputData(deck1, deck2);
+		var result = _cardWarProcessor.ProcessInput(input);
+		Assert.AreEqual(result, GameResultType.Tie);
 	}
 }

@@ -4,5 +4,5 @@ namespace CodingDojo.CardWars.Infrastructure;
 
 public interface ICardWarProcessor
 {
-	CardWarOutputData ProcessInput(CardWarInputData inputData);
+	GameResultType ProcessInput(CardWarInputData inputData);
 }

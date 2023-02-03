@@ -5,13 +5,13 @@ namespace CodingDojo.CardWars.Implementation;
 
 public class ExampleCardWarProcessor : ICardWarProcessor
 {
-	public CardWarOutputData ProcessInput(CardWarInputData inputData)
+	public GameResultType ProcessInput(CardWarInputData inputData)
 	{
 		if (inputData.PlayerOneStartingDeck.Any() && inputData.PlayerTwoStartingDeck.Any())
 		{
-			return CardWarOutputData.PlayerOne();
+			return GameResultType.PlayerOne;
 		}
 		
-		return CardWarOutputData.Tie();
+		return GameResultType.Tie;
 	}
 }
