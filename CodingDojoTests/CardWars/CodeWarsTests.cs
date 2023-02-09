@@ -31,7 +31,7 @@ public class CodeWarsTests
 
 		var input = new CardWarInputData(deck1, deck2);
 		var result = _cardWarProcessor.ProcessInput(input);
-		Assert.AreEqual(result, GameResultType.PlayerTwo);
+		Assert.AreEqual(GameResultType.PlayerTwo, result);
 	}
 
 	[Test]
@@ -50,5 +50,57 @@ public class CodeWarsTests
 		var input = new CardWarInputData(deck1, deck2);
 		var result = _cardWarProcessor.ProcessInput(input);
 		Assert.AreEqual(result, GameResultType.Tie);
+	}
+	
+	[Test]
+	public void IsLargeHigherHandWins()
+	{
+		var deck1 = new List<CardValue>
+		{
+			CardValue.Two,
+			CardValue.Three,
+			CardValue.Four,
+			CardValue.Five,
+			CardValue.Ace
+		};
+
+		var deck2 = new List<CardValue>
+		{
+			CardValue.Two,
+			CardValue.Three,
+			CardValue.Four,
+			CardValue.Five,
+			CardValue.Six
+		};
+
+		var input = new CardWarInputData(deck1, deck2);
+		var result = _cardWarProcessor.ProcessInput(input);
+		Assert.AreEqual(GameResultType.PlayerOne, result);
+	}
+
+	[Test]
+	public void IsLargeEqualHandsTies()
+	{
+		var deck1 = new List<CardValue>
+		{
+			CardValue.Three,
+			CardValue.Two,
+			CardValue.Five,
+			CardValue.Ace,
+			CardValue.Four,
+		};
+
+		var deck2 = new List<CardValue>
+		{
+			CardValue.Three,
+			CardValue.Two,
+			CardValue.Five,
+			CardValue.Six,
+			CardValue.Four,
+		};
+
+		var input = new CardWarInputData(deck1, deck2);
+		var result = _cardWarProcessor.ProcessInput(input);
+		Assert.AreEqual(GameResultType.Tie, result);
 	}
 }
