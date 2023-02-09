@@ -3,7 +3,7 @@ using CodingDojo.CardWars.Infrastructure;
 
 namespace CodingDojo.CardWars.Implementation;
 
-public class ExampleCardWarProcessor : ICardWarProcessor
+public class NichitaCardWarProcessor : ICardWarProcessor
 {
     public GameResultType ProcessInput(CardWarInputData inputData)
     {
